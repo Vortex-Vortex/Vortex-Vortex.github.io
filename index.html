@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Startpage</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: monospace;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+      }
+
+      .clock {
+        font-size: 9em;
+        padding-top: 15px;
+      }
+
+      .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        border: 2px solid gray;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: black;
+      }
+
+      .search-container input {
+        background-color: black;
+        border: 0px solid white;
+        color: white;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 2em;
+        text-indent: 0px;
+        padding: 3px;
+        height: 24px;
+        width: 100%;
+/*         margin: -14px -8px -14px -8px; */
+      }
+
+      .search-container input:focus {
+        outline: none;
+      }
+
+      #sidebar {
+        position: fixed;
+        top: 13.25%;
+        left: 0;
+        bottom: 13.25%;
+        width: 50px;
+        background-color: #000000;
+        color: #fff;
+      }
+
+      #sidebar-button {
+        position: absolute;
+        top: 50%;
+        bottom: 50%;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transition: left 0.3s;
+        background-color: #fff;
+        text-align: center;
+        line-height: 30px;
+      }
+
+      #sidebar-content {
+        position: absolute;
+        top: 0%;
+        left: -230px;
+        bottom: 0%;
+        width: 210px;
+        padding: 10px;
+        overflow-y: auto;
+        transition: left 0.3s;
+        border: 1px solid #ccc;
+        background-color: #000;
+      }
+
+      #sidebar-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 0px;
+      }
+
+      #sidebar-content td, #sidebar-content th {
+        padding: 5px;
+        border: 1px solid #ccc;
+      }
+
+      #sidebar:hover #sidebar-content {
+        left: 0;
+      }
+
+      #sidebar:hover #sidebar-button {
+        left: 245px;
+      }
+
+      .left-column {
+        position: fixed;
+        top: 0;
+        right: 175px;
+        bottom: 0;
+        width: 175px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .right-column {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 175px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .box img {
+        width: 100%;
+        height: auto;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <div class="clock" id="clock"></div>
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="[Vortex@VortexOS] search query" autofocus style="text-align: center;" />
+    </div>
+
+    <script>
+      const searchBar = document.getElementById('search-bar');
+      window.addEventListener('beforeunload', () => {
+        searchBar.value = '';
+      });
+
+      function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+        document.getElementById("clock").textContent = timeString;
+      }
+
+      function handleCommand() {
+        var input = document.querySelector(".search-container input");
+        var value = input.value.trim();
+
+        if (value.startsWith('/s') || value.startsWith('\\s')) {
+          // search command
+          var args = value.split(' ');
+          var searchEngine = 'https://www.startpage.com/do/search?query=';
+          switch (args[1]) {
+            case 'gg':
+              searchEngine = 'https://www.google.com/search?q=';
+              break;gi
+            case 'st':
+              searchEngine = 'https://www.startpage.com/do/search?query=';
+              break;
+            case 'dd':
+              searchEngine = 'https://duckduckgo.com/?q=';
+              break;
+            case 'yh':
+              searchEngine = 'https://search.yahoo.com/search?p=';
+              break;
+            case 'bg':
+              searchEngine = 'https://www.bing.com/search?q=';
+              break;
+            // add more search engines
+            default:
+              // default to startpage
+              searchEngine = 'https://www.startpage.com/do/search?query=';
+              break;
+          }
+          var query = encodeURIComponent(args.slice(2).join(' '));
+          window.location.href = searchEngine + query;
+        }
+        else if (value.startsWith('/y') || value.startsWith('\\y')) {
+          // youtube search command
+          var args = value.split(' ');
+          var searchEngine = 'https://www.youtube.com/results?search_query=';
+          var query = encodeURIComponent(args.slice(1).join(' '));
+          window.location.href = searchEngine + query;
+        }
+        else if (value.startsWith('.')) {
+          // site command
+          var siteMap = {
+            '.tt': 'https://twitter.com/',
+            '.yt': 'https://www.youtube.com/',
+            '.tv': 'https://www.tradingview.com/',
+            '.tw': 'https://www.twitch.tv/directory/following/live',
+            '.dc': 'https://discord.com/channels/@me',
+            '.gh': 'https://github.com',
+            '.cg': 'https://chat.openai.com/chat/',
+            '.pt': 'https://mail.proton.me/',
+            '.ch': 'https://www.color-hex.com/',
+            '.op': 'https://onepiecechapters.com/',
+            '.js': 'https://jstris.jezevec10.com/',
+            '.mn': 'https://minesweeper.online/',
+            '.gm': 'https://mail.google.com',
+            '.sa': 'https://sanet.st/full/',
+            '.wp': 'https://web.whatsapp.com/',
+            // add more sites here
+          };
+          var site = siteMap[value];
+          if (site) {
+            window.location.href = site;
+          }
+        }
+        else {
+          // default to startpage
+          window.location.href = 'https://www.startpage.com/do/search?query=' + encodeURIComponent(value);
+        }
+      }
+      var input = document.querySelector(".search-container input");
+        input.addEventListener("keydown", function(event) {
+          if (event.keyCode === 13) {
+            handleCommand();
+          }
+        });
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+
+    <div id="sidebar">
+      <div id="sidebar-button">
+        <span style="color: #000000;font-size: 28px;">&#10148;</span>
+      </div>
+      <div id="sidebar-content">
+        <table style="width: 95%;">
+          <thead>
+            <tr>
+              <th>Command</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>/s | \s [engine] [query]</td>
+              <td>Search [query] w/ [engine]</td>
+            </tr>
+            <tr>
+              <td>[engine]</td>
+              <td>gg (google.com)</td>
+            </tr>
+            <tr>
+              <td>[engine]</td>
+              <td>st (startpage.com)</td>
+            </tr>
+            <tr>
+              <td>[engine]</td>
+              <td>yh (search.yahoo.com)</td>
+            </tr>
+            <tr>
+              <td>[engine]</td>
+              <td>bg (bing.com)</td>
+            </tr>
+            <tr>
+              <td>[engine]</td>
+              <td>dd (duckduckgo.com)</td>
+            </tr>
+            <tr>
+              <td>.ch</td>
+              <td>Color-Hex</td>
+            </tr>
+            <tr>
+              <td>.dc</td>
+              <td>Discord</td>
+            </tr>
+            <tr>
+              <td>.gh</td>
+              <td>GitHub</td>
+            </tr>
+            <tr>
+              <td>.gm</td>
+              <td>Gmail</td>
+            </tr>
+            <tr>
+              <td>.js</td>
+              <td>Jstris</td>
+            </tr>
+            <tr>
+              <td>.mn</td>
+              <td>Minesweeper</td>
+            </tr>
+            <tr>
+              <td>.cg</td>
+              <td>OpenAI-chat</td>
+            </tr>
+            <tr>
+              <td>.pt</td>
+              <td>ProtonMail</td>
+            </tr>
+            <tr>
+              <td>.sa</td>
+              <td>Sanet</td>
+            </tr>
+            <tr>
+              <td>.op</td>
+              <td>TCB-scans</td>
+            </tr>
+            <tr>
+              <td>.tv</td>
+              <td>TradingView</td>
+            </tr>
+            <tr>
+              <td>.tw</td>
+              <td>Twitch</td>
+            </tr>
+            <tr>
+              <td>.tt</td>
+              <td>Twitter</td>
+            </tr>
+            <tr>
+              <td>.wp</td>
+              <td>Whatsapp</td>
+            </tr>
+            <tr>
+              <td>.yt</td>
+              <td>YouTube</td>
+            </tr>
+            <!-- add more commands here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="left-column">
+      <a href="https://wiki.archlinux.org">
+        <div class="box">
+          <img src="https://i.imgur.com/YMkcmvI.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://chat.openai.com">
+        <div class="box">
+          <img src="https://i.imgur.com/wpEqcHD.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://web.whatsapp.com">
+        <div class="box">
+          <img src="https://i.imgur.com/4RSHLiE.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://onepiecechapters.com">
+        <div class="box">
+          <img src="https://i.imgur.com/ou9YhZw.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://jstris.jezevec10.com/">
+        <div class="box">
+          <img src="https://i.imgur.com/9sxwzWH.png" alt="Image 1">
+        </div>
+      </a>
+    </div>
+
+    <div class="right-column">
+      <a href="https://twitter.com">
+        <div class="box">
+          <img src="https://i.imgur.com/e435seo.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://youtube.com">
+        <div class="box">
+          <img src="https://i.imgur.com/VBBe0Xy.png" alt="Image 3">
+        </div>
+      </a>
+      <a href="https://github.com">
+        <div class="box">
+          <img src="https://i.imgur.com/yJsy5om.png" alt="Image 3">
+        </div>
+      </a>
+      <a href="https://tradingview.com">
+        <div class="box">
+          <img src="https://i.imgur.com/cVNPWtF.png" alt="Image 2">
+        </div>
+      </a>
+      <a href="https://mail.google.com">
+        <div class="box">
+          <img src="https://i.imgur.com/JuvQFmB.png" alt="Image 3">
+        </div>
+      </a>
+    </div>
+  </body>
+</html>
