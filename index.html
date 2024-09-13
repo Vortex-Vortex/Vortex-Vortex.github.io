@@ -10,6 +10,12 @@
         font-weight: bold;
         color: white;
         text-align: center;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
       }
 
       .clock {
@@ -26,8 +32,6 @@
         margin-top: 15px;
         margin-bottom: 5px;
         width: 40%;
-        margin-left: auto;
-        margin-right: auto;
         background-color: black;
       }
 
@@ -42,70 +46,37 @@
         padding: 3px;
         height: 24px;
         width: 100%;
-/*         margin: -14px -8px -14px -8px; */
       }
 
       .search-container input:focus {
         outline: none;
       }
 
-      #sidebar {
+      .column1 {
         position: fixed;
-        top: 13.25%;
+        top: 0;
         left: 0;
-        bottom: 13.25%;
-        width: 50px;
-        background-color: #000000;
-        color: #fff;
+        bottom: 0;
+        width: 175px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
-      #sidebar-button {
-        position: absolute;
-        top: 50%;
-        bottom: 50%;
-        left: 10px;
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        transition: left 0.3s;
-        background-color: #fff;
-        text-align: center;
-        line-height: 30px;
+      .column2 {
+        position: fixed;
+        top: 0;
+        left: 175px;
+        bottom: 0;
+        width: 175px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
       }
 
-      #sidebar-content {
-        position: absolute;
-        top: 0%;
-        left: -230px;
-        bottom: 0%;
-        width: 210px;
-        padding: 10px;
-        overflow-y: auto;
-        transition: left 0.3s;
-        border: 1px solid #ccc;
-        background-color: #000;
-      }
-
-      #sidebar-content table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 0px;
-      }
-
-      #sidebar-content td, #sidebar-content th {
-        padding: 5px;
-        border: 1px solid #ccc;
-      }
-
-      #sidebar:hover #sidebar-content {
-        left: 0;
-      }
-
-      #sidebar:hover #sidebar-button {
-        left: 245px;
-      }
-
-      .left-column {
+      .column3 {
         position: fixed;
         top: 0;
         right: 175px;
@@ -117,7 +88,7 @@
         align-items: center;
       }
 
-      .right-column {
+      .column4 {
         position: fixed;
         top: 0;
         right: 0;
@@ -245,110 +216,63 @@
       updateClock();
       setInterval(updateClock, 1000);
     </script>
-
-    <div id="sidebar">
-      <div id="sidebar-button">
-        <span style="color: #000000;font-size: 28px;">&#10148;</span>
-      </div>
-      <div id="sidebar-content">
-        <table style="width: 95%;">
-          <thead>
-            <tr>
-              <th>Command</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>/s | \s [engine] [query]</td>
-              <td>Search [query] w/ [engine]</td>
-            </tr>
-            <tr>
-              <td>[engine]</td>
-              <td>gg (google.com)</td>
-            </tr>
-            <tr>
-              <td>[engine]</td>
-              <td>st (startpage.com)</td>
-            </tr>
-            <tr>
-              <td>[engine]</td>
-              <td>yh (search.yahoo.com)</td>
-            </tr>
-            <tr>
-              <td>[engine]</td>
-              <td>bg (bing.com)</td>
-            </tr>
-            <tr>
-              <td>[engine]</td>
-              <td>dd (duckduckgo.com)</td>
-            </tr>
-            <tr>
-              <td>.ch</td>
-              <td>Color-Hex</td>
-            </tr>
-            <tr>
-              <td>.dc</td>
-              <td>Discord</td>
-            </tr>
-            <tr>
-              <td>.gh</td>
-              <td>GitHub</td>
-            </tr>
-            <tr>
-              <td>.gm</td>
-              <td>Gmail</td>
-            </tr>
-            <tr>
-              <td>.js</td>
-              <td>Jstris</td>
-            </tr>
-            <tr>
-              <td>.mn</td>
-              <td>Minesweeper</td>
-            </tr>
-            <tr>
-              <td>.cg</td>
-              <td>OpenAI-chat</td>
-            </tr>
-            <tr>
-              <td>.pt</td>
-              <td>ProtonMail</td>
-            </tr>
-            <tr>
-              <td>.sa</td>
-              <td>Sanet</td>
-            </tr>
-            <tr>
-              <td>.op</td>
-              <td>TCB-scans</td>
-            </tr>
-            <tr>
-              <td>.tv</td>
-              <td>TradingView</td>
-            </tr>
-            <tr>
-              <td>.tw</td>
-              <td>Twitch</td>
-            </tr>
-            <tr>
-              <td>.tt</td>
-              <td>Twitter</td>
-            </tr>
-            <tr>
-              <td>.wp</td>
-              <td>Whatsapp</td>
-            </tr>
-            <tr>
-              <td>.yt</td>
-              <td>YouTube</td>
-            </tr>
-            <!-- add more commands here -->
-          </tbody>
-        </table>
-      </div>
+    <div class="column1">
+      <a href="https://tetr.io">
+        <div class="box">
+          <img src="https://i.imgur.com/RY9WsQu.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://gemini.google.com">
+        <div class="box">
+          <img src="https://i.imgur.com/5yJas73.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://mail.proton.me">
+        <div class="box">
+          <img src="https://i.imgur.com/jCxRrh0.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://sudoku.com">
+        <div class="box">
+          <img src="https://i.imgur.com/Ecu3QbO.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://minesweeper.online/">
+        <div class="box">
+          <img src="https://i.imgur.com/c75XiLl.png" alt="Image 1">
+        </div>
+      </a>
     </div>
-    <div class="left-column">
+
+    <div class="column2">
+      <a href="https://awesomewm.org/doc/api/">
+        <div class="box">
+          <img src="https://i.imgur.com/X56JumN.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://www.gnu.org/software/bash/manual/bash.html">
+        <div class="box">
+          <img src="https://i.imgur.com/nJ7r01B.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://bybit.com">
+        <div class="box">
+          <img src="https://i.imgur.com/HAFoTJm.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://www.lua.org/manual/5.4/">
+        <div class="box">
+          <img src="https://i.imgur.com/assQUQy.png" alt="Image 1">
+        </div>
+      </a>
+      <a href="https://jstris.jezevec10.com/">
+        <div class="box">
+          <img src="https://i.imgur.com/9sxwzWH.png" alt="Image 1">
+        </div>
+      </a>
+    </div>
+
+    <div class="column3">
       <a href="https://wiki.archlinux.org">
         <div class="box">
           <img src="https://i.imgur.com/YMkcmvI.png" alt="Image 1">
@@ -376,10 +300,10 @@
       </a>
     </div>
 
-    <div class="right-column">
-      <a href="https://twitter.com">
+    <div class="column4">
+      <a href="https://x.com">
         <div class="box">
-          <img src="https://i.imgur.com/e435seo.png" alt="Image 1">
+          <img src="https://i.imgur.com/SDPGTy7.png" alt="Image 1">
         </div>
       </a>
       <a href="https://youtube.com">
