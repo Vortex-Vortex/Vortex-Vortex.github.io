@@ -176,40 +176,52 @@
           var query = encodeURIComponent(args.slice(1).join(' '));
           window.location.href = searchEngine + query;
         }
-        else if (value.startsWith('.')) {
-          // site command
-          var siteMap = {
-            '.tt': 'https://twitter.com/',
-            '.yt': 'https://www.youtube.com/',
-            '.tv': 'https://www.tradingview.com/',
-            '.tw': 'https://www.twitch.tv/directory/following/live',
-            '.dc': 'https://discord.com/channels/@me',
-            '.gh': 'https://github.com',
-            '.cg': 'https://chat.openai.com/chat/',
-            '.pt': 'https://mail.proton.me/',
-            '.ch': 'https://www.color-hex.com/',
-            '.op': 'https://onepiecechapters.com/',
-            '.js': 'https://jstris.jezevec10.com/',
-            '.mn': 'https://minesweeper.online/',
-            '.gm': 'https://mail.google.com',
-            '.sa': 'https://sanet.st/full/',
-            '.wp': 'https://web.whatsapp.com/',
-            // add more sites here
-          };
-          var site = siteMap[value];
-          if (site) {
-            window.location.href = site;
-          }
-        }
         else {
           // default to startpage
           window.location.href = 'https://www.startpage.com/do/search?query=' + encodeURIComponent(value);
         }
       }
       var input = document.querySelector(".search-container input");
-        input.addEventListener("keydown", function(event) {
+        input.addEventListener("keyup", function(event) {
           if (event.keyCode === 13) {
             handleCommand();
+          }
+          else {
+            var input = document.querySelector(".search-container input");
+            var value = input.value.trim();
+
+            if (value.startsWith('.')) {
+              // site command
+              var siteMap = {
+                '.tt': 'https://twitter.com/',
+                '.x': 'https://x.com/',
+                '.yt': 'https://www.youtube.com/',
+                '.tv': 'https://www.tradingview.com/',
+                '.gh': 'https://github.com',
+                '.cg': 'https://chat.openai.com/chat/',
+                '.gn': 'https://gemini.google.com',
+                '.ch': 'https://www.color-hex.com/',
+                '.op': 'https://onepiecechapters.com/',
+                '.js': 'https://jstris.jezevec10.com/',
+                '.tr': 'https://tetr.io',
+                '.mn': 'https://minesweeper.online/',
+                '.su': 'https://sudoku.com',
+                '.gm': 'https://mail.google.com',
+                '.pt': 'https://mail.proton.me/',
+                '.sa': 'https://sanet.st/full/',
+                '.wp': 'https://web.whatsapp.com/',
+                '.bb': 'https://bybit.com',
+                '.lua': 'https://www.lua.org/manual/5.4/',
+                '.sh': 'https://www.gnu.org/software/bash/manual/bash.html',
+                '.aw': 'https://awesomewm.org/doc/api/',
+
+                // add more sites here
+              };
+              var site = siteMap[value];
+              if (site) {
+                window.location.href = site;
+              }
+            }
           }
         });
 
