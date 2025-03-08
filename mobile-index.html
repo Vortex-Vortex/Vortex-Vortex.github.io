@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startpage - Mobile</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: monospace;
+        font-weight: bold;
+        color: white;
+        text-align: center;
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 0;
+      }
+
+      .clock {
+        font-size: 5em;
+        padding-top: 15px;
+      }
+
+      .search-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 2px;
+        border: 2px solid gray;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        width: 80%;
+        background-color: black;
+      }
+
+      .search-container input {
+        background-color: black;
+        border: 0px solid white;
+        color: white;
+        font-family: monospace;
+        font-weight: bold;
+        font-size: 2em;
+        text-indent: 0px;
+        padding: 3px;
+        height: 24px;
+        width: 100%;
+      }
+
+      .search-container input:focus {
+        outline: none;
+      }
+
+      .columns-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      .column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 20px;
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .box img {
+        width: 80%;
+        height: auto;
+      }
+
+      .switch-link {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="clock" id="clock"></div>
+    <div class="search-container">
+      <input type="text" id="search-bar" placeholder="[Vortex@VortexOS] search query" autofocus style="text-align: center;" />
+    </div>
+
+    <div class="columns-container">
+      <div class="column">
+        <a href="https://wiki.archlinux.org">
+          <div class="box">
+            <img src="icons/arch.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://awesomewm.org/doc/api">
+          <div class="box">
+            <img src="icons/awesomewm.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://www.gnu.org/software/bash/manual/bash.html">
+          <div class="box">
+            <img src="icons/bash.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://bybit.com">
+          <div class="box">
+            <img src="icons/bybit.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://chat.openai.com/">
+          <div class="box">
+            <img src="icons/chatgpt.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://chat.deepseek.com">
+          <div class="box">
+            <img src="icons/deepseek.png" alt="Image 1">
+          </div>
+        </a>
+      </div>
+
+      <div class="column">
+        <a href="https://gemini.google.com">
+          <div class="box">
+            <img src="icons/gemini.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://github.com">
+          <div class="box">
+            <img src="icons/github.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://mail.google.com">
+          <div class="box">
+            <img src="icons/gmail.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://jstris.jezevec10.com">
+          <div class="box">
+            <img src="icons/jstris.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://uspdigital.usp.br/jupiterweb">
+          <div class="box">
+            <img src="icons/jupiterweb.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://www.lua.org/manual/5.4">
+          <div class="box">
+            <img src="icons/lua.png" alt="Image 1">
+          </div>
+        </a>
+      </div>
+
+      <div class="column">
+        <a href="https://maps.google.com">
+          <div class="box">
+            <img src="icons/maps.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://minesweeper.online">
+          <div class="box">
+            <img src="icons/minesweeper.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://edisciplinas.usp.br">
+          <div class="box">
+            <img src="icons/moodle.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://tcbscans.me">
+          <div class="box">
+            <img src="icons/onepiece.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://mail.proton.me">
+          <div class="box">
+            <img src="icons/proton.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://sudoku.com">
+          <div class="box">
+            <img src="icons/sudoku.png" alt="Image 1">
+          </div>
+        </a>
+      </div>
+
+      <div class="column">
+        <a href="https://tetr.io">
+          <div class="box">
+            <img src="icons/tetrio.png" alt="Image 1">
+          </div>
+        </a>
+        <a href="https://tradingview.com">
+          <div class="box">
+            <img src="icons/tradingview.png" alt="Image 3">
+          </div>
+        </a>
+        <a href="https://web.whatsapp.com">
+          <div class="box">
+            <img src="icons/whatsapp.png" alt="Image 3">
+          </div>
+        </a>
+        <a href="https://x.com">
+          <div class="box">
+            <img src="icons/x.png" alt="Image 2">
+          </div>
+        </a>
+        <a href="https://youtube.com">
+          <div class="box">
+            <img src="icons/youtube.png" alt="Image 3">
+          </div>
+        </a>
+        <a href="">
+          <div class="box">
+            <img src="icons/molde.svg" alt="Image 1">
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Link to switch to desktop layout -->
+    <a href="index.html" class="switch-link">Switch to Desktop Layout</a>
+
+    <script>
+      const searchBar = document.getElementById('search-bar');
+      window.addEventListener('beforeunload', () => {
+        searchBar.value = '';
+      });
+
+      function updateClock() {
+        var now = new Date();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
+        document.getElementById("clock").textContent = timeString;
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    </script>
+  </body>
+</html>
