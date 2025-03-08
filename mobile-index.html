@@ -2,26 +2,28 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Startpage - Mobile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startpage</title>
     <style>
       body {
         background-color: black;
         font-family: monospace;
         font-weight: bold;
         color: white;
-        text-align: center;
-        height: 90vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
         margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
 
       .clock {
-        font-size: 5em;
-        padding-top: 15px;
+        font-size: 4em;
+        padding: 10px 0;
       }
 
       .search-container {
@@ -30,22 +32,20 @@
         align-items: center;
         padding: 2px;
         border: 2px solid gray;
-        margin-top: 15px;
-        margin-bottom: 5px;
-        width: 80%;
+        margin: 15px 0;
+        width: 90%;
         background-color: black;
       }
 
       .search-container input {
         background-color: black;
-        border: 0px solid white;
+        border: 0;
         color: white;
         font-family: monospace;
         font-weight: bold;
-        font-size: 2em;
-        text-indent: 0px;
-        padding: 3px;
-        height: 24px;
+        font-size: 1.2em;
+        text-align: center;
+        padding: 5px;
         width: 100%;
       }
 
@@ -53,189 +53,160 @@
         outline: none;
       }
 
-      .columns-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      .boxes-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
         width: 100%;
-        margin-top: 20px;
-      }
-
-      .column {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
       }
 
       .box {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        padding: 5px;
       }
 
       .box img {
-        width: 80%;
+        width: 80px;
         height: auto;
-      }
-
-      .switch-link {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        color: white;
-        text-decoration: none;
-        font-size: 1.2em;
       }
     </style>
   </head>
 
   <body>
-    <div class="clock" id="clock"></div>
-    <div class="search-container">
-      <input type="text" id="search-bar" placeholder="[Vortex@VortexOS] search query" autofocus style="text-align: center;" />
-    </div>
+    <div class="container">
+      <div class="clock" id="clock"></div>
+      <div class="search-container">
+        <input type="text" id="search-bar" placeholder="[Vortex@VortexOS] search query" autofocus />
+      </div>
 
-    <div class="columns-container">
-      <div class="column">
+      <div class="boxes-container">
         <a href="https://wiki.archlinux.org">
           <div class="box">
-            <img src="icons/arch.png" alt="Image 1">
+            <img src="icons/arch.png" alt="Arch">
           </div>
         </a>
         <a href="https://awesomewm.org/doc/api">
           <div class="box">
-            <img src="icons/awesomewm.png" alt="Image 1">
+            <img src="icons/awesomewm.png" alt="AwesomeWM">
           </div>
         </a>
         <a href="https://www.gnu.org/software/bash/manual/bash.html">
           <div class="box">
-            <img src="icons/bash.png" alt="Image 1">
+            <img src="icons/bash.png" alt="Bash">
           </div>
         </a>
         <a href="https://bybit.com">
           <div class="box">
-            <img src="icons/bybit.png" alt="Image 1">
+            <img src="icons/bybit.png" alt="Bybit">
           </div>
         </a>
         <a href="https://chat.openai.com/">
           <div class="box">
-            <img src="icons/chatgpt.png" alt="Image 1">
+            <img src="icons/chatgpt.png" alt="ChatGPT">
           </div>
         </a>
         <a href="https://chat.deepseek.com">
           <div class="box">
-            <img src="icons/deepseek.png" alt="Image 1">
+            <img src="icons/deepseek.png" alt="Deepseek">
           </div>
         </a>
-      </div>
-
-      <div class="column">
         <a href="https://gemini.google.com">
           <div class="box">
-            <img src="icons/gemini.png" alt="Image 1">
+            <img src="icons/gemini.png" alt="Gemini">
           </div>
         </a>
         <a href="https://github.com">
           <div class="box">
-            <img src="icons/github.png" alt="Image 1">
+            <img src="icons/github.png" alt="Github">
           </div>
         </a>
         <a href="https://mail.google.com">
           <div class="box">
-            <img src="icons/gmail.png" alt="Image 1">
+            <img src="icons/gmail.png" alt="Gmail">
           </div>
         </a>
         <a href="https://jstris.jezevec10.com">
           <div class="box">
-            <img src="icons/jstris.png" alt="Image 1">
+            <img src="icons/jstris.png" alt="Jstris">
           </div>
         </a>
         <a href="https://uspdigital.usp.br/jupiterweb">
           <div class="box">
-            <img src="icons/jupiterweb.png" alt="Image 1">
+            <img src="icons/jupiterweb.png" alt="Jupiterweb">
           </div>
         </a>
         <a href="https://www.lua.org/manual/5.4">
           <div class="box">
-            <img src="icons/lua.png" alt="Image 1">
+            <img src="icons/lua.png" alt="Lua">
           </div>
         </a>
-      </div>
-
-      <div class="column">
         <a href="https://maps.google.com">
           <div class="box">
-            <img src="icons/maps.png" alt="Image 1">
+            <img src="icons/maps.png" alt="Maps">
           </div>
         </a>
         <a href="https://minesweeper.online">
           <div class="box">
-            <img src="icons/minesweeper.png" alt="Image 1">
+            <img src="icons/minesweeper.png" alt="Minesweeper">
           </div>
         </a>
         <a href="https://edisciplinas.usp.br">
           <div class="box">
-            <img src="icons/moodle.png" alt="Image 1">
+            <img src="icons/moodle.png" alt="Moodle">
           </div>
         </a>
         <a href="https://tcbscans.me">
           <div class="box">
-            <img src="icons/onepiece.png" alt="Image 1">
+            <img src="icons/onepiece.png" alt="Onepiece">
           </div>
         </a>
         <a href="https://mail.proton.me">
           <div class="box">
-            <img src="icons/proton.png" alt="Image 1">
+            <img src="icons/proton.png" alt="Proton">
           </div>
         </a>
         <a href="https://sudoku.com">
           <div class="box">
-            <img src="icons/sudoku.png" alt="Image 1">
+            <img src="icons/sudoku.png" alt="Sudoku">
           </div>
         </a>
-      </div>
-
-      <div class="column">
         <a href="https://tetr.io">
           <div class="box">
-            <img src="icons/tetrio.png" alt="Image 1">
+            <img src="icons/tetrio.png" alt="Tetrio">
           </div>
         </a>
         <a href="https://tradingview.com">
           <div class="box">
-            <img src="icons/tradingview.png" alt="Image 3">
+            <img src="icons/tradingview.png" alt="Tradingview">
           </div>
         </a>
         <a href="https://web.whatsapp.com">
           <div class="box">
-            <img src="icons/whatsapp.png" alt="Image 3">
+            <img src="icons/whatsapp.png" alt="Whatsapp">
           </div>
         </a>
         <a href="https://x.com">
           <div class="box">
-            <img src="icons/x.png" alt="Image 2">
+            <img src="icons/x.png" alt="X">
           </div>
         </a>
         <a href="https://youtube.com">
           <div class="box">
-            <img src="icons/youtube.png" alt="Image 3">
+            <img src="icons/youtube.png" alt="Youtube">
           </div>
         </a>
         <a href="">
           <div class="box">
-            <img src="icons/molde.svg" alt="Image 1">
+            <img src="icons/molde.svg" alt="Molde">
           </div>
         </a>
       </div>
     </div>
 
-    <!-- Link to switch to desktop layout -->
-    <a href="index.html" class="switch-link">Switch to Desktop Layout</a>
-
+    <!-- JavaScript remains unchanged -->
     <script>
       const searchBar = document.getElementById('search-bar');
       window.addEventListener('beforeunload', () => {
@@ -250,6 +221,88 @@
         var timeString = hours.toString().padStart(2, "0") + ":" + minutes.toString().padStart(2, "0") + ":" + seconds.toString().padStart(2, "0");
         document.getElementById("clock").textContent = timeString;
       }
+
+      function handleCommand() {
+        var input = document.querySelector(".search-container input");
+        var value = input.value.trim();
+
+        if (value.startsWith('/s') || value.startsWith('\\s')) {
+          var args = value.split(' ');
+          var searchEngine = 'https://www.startpage.com/do/search?query=';
+          switch (args[1]) {
+            case 'gg':
+              searchEngine = 'https://www.google.com/search?q=';
+              break;
+            case 'st':
+              searchEngine = 'https://www.startpage.com/do/search?query=';
+              break;
+            case 'dd':
+              searchEngine = 'https://duckduckgo.com/?q=';
+              break;
+            case 'yh':
+              searchEngine = 'https://search.yahoo.com/search?p=';
+              break;
+            case 'bg':
+              searchEngine = 'https://www.bing.com/search?q=';
+              break;
+            default:
+              searchEngine = 'https://www.startpage.com/do/search?query=';
+              break;
+          }
+          var query = encodeURIComponent(args.slice(2).join(' '));
+          window.location.href = searchEngine + query;
+        }
+        else if (value.startsWith('/y') || value.startsWith('\\y')) {
+          var args = value.split(' ');
+          var searchEngine = 'https://www.youtube.com/results?search_query=';
+          var query = encodeURIComponent(args.slice(1).join(' '));
+          window.location.href = searchEngine + query;
+        }
+        else {
+          window.location.href = 'https://www.startpage.com/do/search?query=' + encodeURIComponent(value);
+        }
+      }
+
+      var input = document.querySelector(".search-container input");
+      input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+          handleCommand();
+        }
+        else {
+          var input = document.querySelector(".search-container input");
+          var value = input.value.trim();
+
+          if (value.startsWith('.')) {
+            var siteMap = {
+              '.tt': 'https://twitter.com/',
+              '.x': 'https://x.com/',
+              '.yt': 'https://www.youtube.com/',
+              '.tv': 'https://www.tradingview.com/',
+              '.gh': 'https://github.com',
+              '.cg': 'https://chat.openai.com/chat/',
+              '.gn': 'https://gemini.google.com',
+              '.ch': 'https://www.color-hex.com/',
+              '.op': 'https://onepiecechapters.com/',
+              '.js': 'https://jstris.jezevec10.com/',
+              '.tr': 'https://tetr.io',
+              '.mn': 'https://minesweeper.online/',
+              '.su': 'https://sudoku.com',
+              '.gm': 'https://mail.google.com',
+              '.pt': 'https://mail.proton.me/',
+              '.sa': 'https://sanet.st/full/',
+              '.wp': 'https://web.whatsapp.com/',
+              '.bb': 'https://bybit.com',
+              '.lua': 'https://www.lua.org/manual/5.4/',
+              '.sh': 'https://www.gnu.org/software/bash/manual/bash.html',
+              '.aw': 'https://awesomewm.org/apidoc/',
+            };
+            var site = siteMap[value];
+            if (site) {
+              window.location.href = site;
+            }
+          }
+        }
+      });
 
       updateClock();
       setInterval(updateClock, 1000);
