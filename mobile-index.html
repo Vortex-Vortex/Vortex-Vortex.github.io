@@ -54,22 +54,24 @@
       }
 
       .boxes-container {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        display: flex;
+        flex-wrap: wrap;
         width: 100%;
         padding-bottom: 20px;
       }
 
       .box {
+        width: 25%;
+        padding: 5px;
+        box-sizing: border-box;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 5px;
       }
 
       .box img {
-        width: 80px;
+        width: 100%;
+        max-width: 100px; /* Prevents images from getting too large on wide screens */
         height: auto;
       }
     </style>
